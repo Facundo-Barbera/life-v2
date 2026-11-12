@@ -18,13 +18,13 @@ export class PulsoError extends Error {
 }
 
 /** Unwraps a supabase-js result; any error becomes a PulsoError. */
-export function must<T>(result: { data: T | null; error: { message: string; code?: string } | null }): T {
+export function must<R extends { data: unknown; error: { message: string; code?: string } | null }>(result: R): NonNullable<R["data"]> {
   if (result.error) {
     const conflict = result.error.code === "23505";
     throw new PulsoError(conflict ? "Ya existe." : `No se pudo guardar: ${result.error.message}`, conflict ? "conflict" : "db");
   }
   if (result.data === null) throw new PulsoError("No encontrado.", "not_found");
-  return result.data;
+  return result.data as NonNullable<R["data"]>;
 }
 
 /** The signed-in user's id (from the local session; RLS still checks every row). */
