@@ -1,5 +1,5 @@
-import { Calendar } from "./calendar";
+import { CalendarApp } from "./calendar-app";
 
 export default function Home() {
-  return <Calendar />;
+  return <CalendarApp />;
 }
