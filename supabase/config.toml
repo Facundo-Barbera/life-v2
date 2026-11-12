@@ -18,3 +18,10 @@ enabled = false
 
 [auth]
 enabled = true
+
+# Sign-up by invitation only: life.before_user_created rejects e-mails without
+# an open row in life.invitations (the first account of an empty project is the
+# owner). On the hosted project enable the same hook in Authentication → Hooks.
+[auth.hook.before_user_created]
+enabled = true
+uri = "pg-functions://postgres/life/before_user_created"
