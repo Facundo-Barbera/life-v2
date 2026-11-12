@@ -86,6 +86,11 @@ export type PulsoSettings = {
   /** Planned meal times, `{ desayuno: "08:00", comida: "14:00", cena: "20:30" }`. */
   meal_times: Partial<Record<MealSlot, string>>;
   substances_in_timeline: boolean;
+  /** Custom bands per nutrient, `{ kcal: { kind, min, max } }`. */
+  nutrition_zones: Record<string, { kind: string; min: number | null; max: number | null }>;
+  water_unit: "ml" | "vaso" | "botella";
+  /** Phone/Watch training preferences. */
+  training_prefs: Record<string, unknown>;
   created_at: string;
   updated_at: string;
 };
@@ -191,6 +196,7 @@ export type Meal = {
   dish_id: string | null;
   dish_name: string | null;
   plan_slot_id: string | null;
+  saved_dish_id: string | null;
   off_plan: boolean;
   notes: string | null;
   created_at: string;
@@ -313,6 +319,8 @@ export type ShoppingItem = {
   category: string;
   source: "manual" | "plan";
   checked: boolean;
+  /** «Ya tengo»: at home already, not counted. */
+  pantry: boolean;
   note: string | null;
   created_at: string;
   updated_at: string;

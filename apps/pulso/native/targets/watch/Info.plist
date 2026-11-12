@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Keeps recording (and mirroring to the phone) with the wrist down. -->
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>workout-processing</string>
+	</array>
+	<key>WKApplication</key>
+	<true/>
+	<key>WKRunsIndependentlyOfCompanionApp</key>
+	<false/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Pulso lee tu frecuencia cardíaca, energía y distancia mientras entrenas para mostrarlas en tu iPhone.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Pulso guarda en Salud los entrenamientos que graba tu Apple Watch durante la sesión, para que cuenten en tus anillos.</string>
+</dict>
+</plist>

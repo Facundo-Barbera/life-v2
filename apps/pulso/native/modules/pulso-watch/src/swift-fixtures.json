@@ -1,0 +1,299 @@
+{
+  "edits" : {
+    "edits" : {
+      "_0" : [
+        {
+          "at" : 814312861,
+          "change" : {
+            "set" : {
+              "exerciseId" : "e1",
+              "set" : {
+                "doneAt" : 1792620060000,
+                "id" : "s1",
+                "reps" : 10,
+                "repsChosen" : false,
+                "rpe" : null,
+                "segments" : [
+                  {
+                    "reps" : 10,
+                    "weightKg" : 40
+                  }
+                ],
+                "weightKg" : 40
+              }
+            }
+          },
+          "id" : "w1",
+          "sessionId" : "live1"
+        },
+        {
+          "at" : 814312862,
+          "change" : {
+            "rest" : {
+              "endsAt" : 814312952,
+              "startedAt" : 814312862
+            }
+          },
+          "id" : "w2",
+          "sessionId" : "live1"
+        },
+        {
+          "at" : 814312863,
+          "change" : {
+            "rest" : {
+
+            }
+          },
+          "id" : "w3",
+          "sessionId" : "live1"
+        },
+        {
+          "at" : 814312864,
+          "change" : {
+            "cardio" : {
+              "clock" : {
+                "accumulated" : 12.5,
+                "exerciseId" : "e2",
+                "runningSince" : 814312864
+              },
+              "exerciseId" : "e2"
+            }
+          },
+          "id" : "w4",
+          "sessionId" : "live1"
+        },
+        {
+          "at" : 814312865,
+          "change" : {
+            "finish" : {
+              "save" : true
+            }
+          },
+          "id" : "w5",
+          "sessionId" : "live1"
+        },
+        {
+          "at" : 814312866,
+          "change" : {
+            "unit" : {
+              "exerciseId" : "press-banca",
+              "unit" : "kg"
+            }
+          },
+          "id" : "w6",
+          "sessionId" : "live1"
+        },
+        {
+          "at" : 814312800,
+          "change" : {
+            "start" : {
+              "_0" : {
+                "cardioClock" : null,
+                "dayId" : "d1",
+                "exercises" : [
+                  {
+                    "cardio" : null,
+                    "cardioLog" : null,
+                    "cutShort" : null,
+                    "equipment" : "barbell",
+                    "exerciseId" : "press-banca",
+                    "hint" : null,
+                    "id" : "e1",
+                    "kind" : "compound",
+                    "modality" : null,
+                    "name" : "Press banca",
+                    "notes" : null,
+                    "repMax" : 10,
+                    "repMin" : 8,
+                    "restSeconds" : 90,
+                    "sets" : [
+                      {
+                        "doneAt" : null,
+                        "id" : "s1",
+                        "reps" : 10,
+                        "repsChosen" : false,
+                        "rpe" : null,
+                        "segments" : [
+                          {
+                            "reps" : 10,
+                            "weightKg" : 40
+                          }
+                        ],
+                        "weightKg" : 40
+                      }
+                    ],
+                    "skipped" : false,
+                    "supersetId" : null,
+                    "targetRir" : null,
+                    "targetRpe" : null
+                  },
+                  {
+                    "cardio" : {
+                      "durationMinutes" : 20,
+                      "speedKmh" : 6
+                    },
+                    "cardioLog" : null,
+                    "cutShort" : null,
+                    "equipment" : "machine",
+                    "exerciseId" : "caminadora",
+                    "hint" : null,
+                    "id" : "e2",
+                    "kind" : "cardio",
+                    "modality" : "treadmill",
+                    "name" : "Caminadora",
+                    "notes" : null,
+                    "repMax" : 0,
+                    "repMin" : 0,
+                    "restSeconds" : 0,
+                    "sets" : [
+
+                    ],
+                    "skipped" : false,
+                    "supersetId" : null,
+                    "targetRir" : null,
+                    "targetRpe" : null
+                  }
+                ],
+                "focus" : 0,
+                "id" : "live1",
+                "name" : "Cuerpo completo",
+                "programId" : "p1",
+                "restEndsAt" : null,
+                "restStartedAt" : null,
+                "startedAt" : 1792620000000,
+                "threadId" : null,
+                "updatedAt" : 1792620000000,
+                "version" : 3
+              }
+            }
+          },
+          "id" : "w7",
+          "sessionId" : "live1"
+        }
+      ]
+    }
+  },
+  "metrics" : {
+    "metrics" : {
+      "_0" : {
+        "activeKcal" : 54.5,
+        "averageHeartRate" : 110,
+        "elapsedFrom" : 814312800,
+        "heartRate" : 121,
+        "paused" : false,
+        "stage" : {
+          "activity" : 50,
+          "indoor" : true
+        },
+        "totalKcal" : 80
+      }
+    }
+  },
+  "stopped" : {
+    "stopped" : {
+
+    }
+  },
+  "sync" : {
+    "sync" : {
+      "_0" : {
+        "applied" : [
+          "x1"
+        ],
+        "closed" : {
+          "id" : "old",
+          "saved" : true
+        },
+        "hrZones" : [
+          {
+            "maxBpm" : 137,
+            "minBpm" : 118,
+            "zone" : 2
+          }
+        ],
+        "recorder" : "watch",
+        "state" : {
+          "cardioClock" : null,
+          "dayId" : "d1",
+          "exercises" : [
+            {
+              "cardio" : null,
+              "cardioLog" : null,
+              "cutShort" : null,
+              "equipment" : "barbell",
+              "exerciseId" : "press-banca",
+              "hint" : null,
+              "id" : "e1",
+              "kind" : "compound",
+              "modality" : null,
+              "name" : "Press banca",
+              "notes" : null,
+              "repMax" : 10,
+              "repMin" : 8,
+              "restSeconds" : 90,
+              "sets" : [
+                {
+                  "doneAt" : null,
+                  "id" : "s1",
+                  "reps" : 10,
+                  "repsChosen" : false,
+                  "rpe" : null,
+                  "segments" : [
+                    {
+                      "reps" : 10,
+                      "weightKg" : 40
+                    }
+                  ],
+                  "weightKg" : 40
+                }
+              ],
+              "skipped" : false,
+              "supersetId" : null,
+              "targetRir" : null,
+              "targetRpe" : null
+            },
+            {
+              "cardio" : {
+                "durationMinutes" : 20,
+                "speedKmh" : 6
+              },
+              "cardioLog" : null,
+              "cutShort" : null,
+              "equipment" : "machine",
+              "exerciseId" : "caminadora",
+              "hint" : null,
+              "id" : "e2",
+              "kind" : "cardio",
+              "modality" : "treadmill",
+              "name" : "Caminadora",
+              "notes" : null,
+              "repMax" : 0,
+              "repMin" : 0,
+              "restSeconds" : 0,
+              "sets" : [
+
+              ],
+              "skipped" : false,
+              "supersetId" : null,
+              "targetRir" : null,
+              "targetRpe" : null
+            }
+          ],
+          "focus" : 0,
+          "id" : "live1",
+          "name" : "Cuerpo completo",
+          "programId" : "p1",
+          "restEndsAt" : null,
+          "restStartedAt" : null,
+          "startedAt" : 1792620000000,
+          "threadId" : null,
+          "updatedAt" : 1792620000000,
+          "version" : 3
+        },
+        "units" : {
+          "press-banca" : "lb"
+        }
+      }
+    }
+  }
+}

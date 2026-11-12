@@ -7,7 +7,7 @@ import { aggregateLines, buyable, classify, groupItems, nameKey } from "./shoppi
 const meal = (over: Partial<Meal>): Meal => ({
   id: crypto.randomUUID(), user_id: "u", eaten_at: "2026-11-12T14:00:00Z", local_date: "2026-11-12", slot: "comida", name: "Arroz",
   quantity: 100, unit: "g", kcal: 130, protein_g: 2.7, carbs_g: 28, fat_g: 0.3, fiber_g: 0.4, source: "manual", barcode: null,
-  caffeine_mg: null, alcohol_g: null, measure: null, dish_id: null, dish_name: null, plan_slot_id: null, off_plan: false, notes: null,
+  caffeine_mg: null, alcohol_g: null, measure: null, dish_id: null, dish_name: null, plan_slot_id: null, saved_dish_id: null, off_plan: false, notes: null,
   created_at: "", updated_at: "", ...over,
 });
 
@@ -81,7 +81,7 @@ describe("shopping", () => {
     expect(buyable(3, "lata")).toBe("3 latas");
   });
   test("groups checked last", () => {
-    const item = (name: string, checked: boolean, category = "despensa") => ({ id: name, user_id: "u", key: null, name, amount: null, quantity: null, unit: null, category, source: "manual" as const, checked, note: null, created_at: "", updated_at: "" });
+    const item = (name: string, checked: boolean, category = "despensa") => ({ id: name, user_id: "u", key: null, name, amount: null, quantity: null, unit: null, category, source: "manual" as const, checked, pantry: false, note: null, created_at: "", updated_at: "" });
     const g = groupItems([item("Sal", true), item("Aceite", false), item("Rollo", false, "raro")]);
     expect(g.map((x) => x.category)).toEqual(["despensa", "otros"]);
     expect(g[0]!.items.map((i) => i.name)).toEqual(["Aceite", "Sal"]);

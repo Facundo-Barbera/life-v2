@@ -1,0 +1,14 @@
+diff --git a/build/with-xcode-changes.js b/build/with-xcode-changes.js
+index 96ded68c694a0eaae6e4068f09a55c50b119bc0c..1a010cf9d55a3eb46ebc094903b0b5a57ddfc069 100644
+--- a/build/with-xcode-changes.js
++++ b/build/with-xcode-changes.js
+@@ -62,7 +62,8 @@ async function applyXcodeChanges(config, project, props) {
+     }
+     const targets = getExtensionTargets();
+     const productName = props.productName;
+-    let targetToUpdate = (_a = targets.find((target) => target.props.productName === productName)) !== null && _a !== void 0 ? _a : targets[0];
++    // Patched (life): only the target of this name; falling back to the first of the same type made a second widget extension (PulsoWidgets beside PulsoActivity) overwrite the first.
++    let targetToUpdate = targets.find((target) => target.props.productName === productName);
+     if (targetToUpdate) {
+         (0, util_1.warnOnce)(`Target "${targetToUpdate.props.productName}" already exists, updating instead of creating a new one`);
+     }

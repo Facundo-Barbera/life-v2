@@ -11,8 +11,7 @@
     "@supabase/supabase-js": "^2.86.0"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "bun test"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "typescript": "^5",

@@ -1,0 +1,1 @@
+../../swift/PulsoActivity/TrainingLiveActivity.swift

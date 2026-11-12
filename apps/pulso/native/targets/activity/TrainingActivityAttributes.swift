@@ -1,0 +1,1 @@
+../../swift/Pulso/Features/Training/TrainingActivityAttributes.swift

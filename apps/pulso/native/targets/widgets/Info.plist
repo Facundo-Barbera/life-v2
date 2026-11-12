@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.widgetkit-extension</string>
+	</dict>
+	<!-- apps/pulso-ios/Config/PulsoWidgets.plist: the snapshot, the mirrored
+	     pairing, and plain HTTP to the Mac over the tailnet. PULSO_APP_BUNDLE_ID
+	     is set per variant by plugins/with-app-bundle-setting.js. -->
+	<key>PulsoAppGroup</key>
+	<string>group.$(PULSO_APP_BUNDLE_ID)</string>
+	<key>PulsoKeychainGroup</key>
+	<string>$(AppIdentifierPrefix)$(PULSO_APP_BUNDLE_ID).shared</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+</dict>
+</plist>

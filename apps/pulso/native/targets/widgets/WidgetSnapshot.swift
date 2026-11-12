@@ -1,0 +1,1 @@
+../../swift/Shared/WidgetSnapshot.swift
