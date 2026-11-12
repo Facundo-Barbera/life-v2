@@ -14,9 +14,13 @@
     "build": "turbo run build",
     "build:pulso": "turbo run build --filter=pulso-web",
     "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test"
   },
   "devDependencies": {
     "turbo": "2.11.11"
+  },
+  "patchedDependencies": {
+    "@bacons/apple-targets@5.0.0": "patches/@bacons%2Fapple-targets@5.0.0.patch"
   }
 }

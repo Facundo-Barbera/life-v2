@@ -139,7 +139,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .rows > * + * { border-top: 1px solid var(--life-border); }
 .list-row { display: flex; align-items: center; gap: 12px; padding: 10px 16px; min-height: 52px; }
 a.list-row:hover, button.list-row:hover { background: var(--life-inner); }
-.list-row .icon { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: var(--life-inner); color: var(--life-muted); flex-shrink: 0; }
+.list-row .icon, .inner .icon { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: var(--life-inner); color: var(--life-muted); flex-shrink: 0; }
 .list-row .sub { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--life-muted); margin-top: 2px; }
 
 /* ---------- Stats ---------- */
