@@ -1,0 +1,20 @@
+# Linked with `supabase link`. Do not put secrets in this file.
+# After creating the hosted project, add `life` and `pulso` to the
+# exposed API schemas in the dashboard (Settings → API).
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "life", "pulso"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = false
+
+[auth]
+enabled = true

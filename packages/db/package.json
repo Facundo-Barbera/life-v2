@@ -1,0 +1,12 @@
+{
+  "name": "@life/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.86.0"
+  }
+}

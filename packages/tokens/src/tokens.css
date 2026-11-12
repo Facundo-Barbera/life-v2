@@ -1,0 +1,15 @@
+:root {
+  --life-bg: #0a0a0a;
+  --life-card: #1c1c1c;
+  --life-inner: #131313;
+  --life-border: #2a2a2a;
+  --life-text: #f0f0f0;
+  --life-muted: #8b8b8b;
+  --life-dim: #5c5c5c;
+  --life-green: #38e0a8;
+  --life-green-bg: #0c2c1f;
+  --life-amber: #f8a840;
+  --life-amber-bg: #2c1a08;
+  --life-blue: #48a8f8;
+  --life-blue-bg: #101838;
+}

@@ -1,0 +1,16 @@
+@import "@life/tokens/tokens.css";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--life-bg);
+  color: var(--life-text);
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+body {
+  font-feature-settings: "ss01" 1, "tnum" 1;
+  font-variant-numeric: tabular-nums;
+}

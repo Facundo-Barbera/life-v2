@@ -2,10 +2,17 @@
   "name": "life-v2",
   "private": true,
   "packageManager": "bun@1.4.4",
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "apps/*/web",
+    "apps/*/native",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "turbo run dev",
+    "dev:pulso": "turbo run dev --filter=pulso-web",
     "build": "turbo run build",
+    "build:pulso": "turbo run build --filter=pulso-web",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck"
   },
