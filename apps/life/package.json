@@ -1,0 +1,22 @@
+{
+  "name": "life",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port ${PORT:-3270}",
+    "build": "next build",
+    "start": "next start --port ${PORT:-3270}",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5"
+  }
+}
