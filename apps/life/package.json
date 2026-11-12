@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port ${PORT:-3270}",
+    "dev": "next dev --hostname ${HOST:-127.0.0.1} --port ${PORT:-3270}",
     "build": "next build",
     "start": "next start --port ${PORT:-3270}",
     "typecheck": "tsc --noEmit"
