@@ -11,7 +11,8 @@ export type CalendarEvent = {
   end: Date;
   calendar: CalendarId;
   allDay?: boolean;
-  kind?: "event" | "focus";
+  kind?: "event" | "focus" | "reminder";
+  done?: boolean;
   location?: string;
   people?: string[];
   video?: boolean;
@@ -41,6 +42,7 @@ const WEEKLY: T[] = [
   { title: "Enfoque", day: 1, from: "10:00", to: "12:00", calendar: "work", kind: "focus" },
   { title: "Enfoque", day: 3, from: "14:00", to: "16:30", calendar: "work", kind: "focus" },
   { title: "Planear próxima semana", day: 4, from: "17:00", to: "17:30", calendar: "personal" },
+  { title: "Tomar vitaminas", day: [0, 1, 2, 3, 4], from: "08:00", to: "08:00", calendar: "health", kind: "reminder" },
 ];
 
 // Only in the current week.
@@ -54,10 +56,15 @@ const THIS_WEEK: T[] = [
   { title: "Llamada con cliente", day: 2, from: "13:15", to: "14:00", calendar: "work", video: true },
   { title: "Leer", day: 2, from: "21:00", to: "22:00", calendar: "personal" },
   { title: "Dentista", day: 3, from: "17:00", to: "18:00", calendar: "health", location: "Clínica Valle" },
-  { title: "Entregar declaración", day: 3, from: "00:00", to: "23:59", calendar: "personal", allDay: true },
+  { title: "Entregar declaración", day: 3, from: "00:00", to: "23:59", calendar: "personal", allDay: true, kind: "reminder" },
+  { title: "Llamar al banco", day: 2, from: "10:00", to: "10:00", calendar: "personal", kind: "reminder" },
+  { title: "Enviar notas de la retro", day: 4, from: "14:15", to: "14:15", calendar: "work", kind: "reminder" },
+  { title: "Comprar regalo para Leo", day: 4, from: "18:30", to: "18:30", calendar: "social", kind: "reminder" },
+  { title: "Regar plantas", day: 5, from: "09:00", to: "09:00", calendar: "personal", kind: "reminder" },
+  { title: "Renovar pasaporte", day: 8, from: "00:00", to: "23:59", calendar: "personal", allDay: true, kind: "reminder" },
   { title: "Retro", day: 4, from: "13:00", to: "14:00", calendar: "work", people: TEAM },
   { title: "Demo", day: 4, from: "15:00", to: "16:00", calendar: "work", video: true, people: ["Ana", "Theo"] },
-  { title: "Pagar servicios", day: 4, from: "15:30", to: "16:00", calendar: "personal" },
+  { title: "Pagar servicios", day: 4, from: "15:30", to: "15:30", calendar: "personal", kind: "reminder" },
   { title: "Cena con amigos", day: 4, from: "20:00", to: "22:00", calendar: "social", location: "Casa de Leo", people: ["Leo", "Sam"] },
   { title: "Fin de semana fuera", day: [5, 6], from: "00:00", to: "23:59", calendar: "personal", allDay: true },
   { title: "Mercado", day: 5, from: "10:00", to: "11:30", calendar: "personal" },
@@ -89,5 +96,7 @@ export function getSampleEvents(now = new Date()): CalendarEvent[] {
     WEEKLY.forEach((t, i) => [t.day].flat().forEach((d) => push(t, d + 7 * w, `w${i}-${w}-${d}`)));
   }
   THIS_WEEK.forEach((t, i) => [t.day].flat().forEach((d) => push(t, d, `o${i}-${d}`)));
+  // Past reminders start completed, except one left overdue on purpose.
+  for (const e of out) if (e.kind === "reminder") e.done = e.end < now && e.title !== "Llamar al banco";
   return out.sort((a, b) => +a.start - +b.start);
 }

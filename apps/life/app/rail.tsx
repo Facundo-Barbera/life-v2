@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Video } from "lucide-react";
 import { CALENDARS, type CalendarEvent } from "@/lib/sample-events";
 import { addDays, cap, fmt, sameDay, startOfWeek } from "@/lib/date";
-import { Avatars } from "./ui";
+import { Avatars, Check } from "@/components/ui";
 
 const LETTERS = ["L", "M", "X", "J", "V", "S", "D"];
 
@@ -71,8 +71,64 @@ export function MiniMonth({
   );
 }
 
-export function Upcoming({ events, now, onSelect }: { events: CalendarEvent[]; now: Date; onSelect: (e: CalendarEvent) => void }) {
-  const list = events.filter((e) => !e.allDay && e.end > now).slice(0, 5);
+export function Reminders({
+  events,
+  now,
+  weekStart,
+  onSelect,
+  onToggle,
+}: {
+  events: CalendarEvent[];
+  now: Date;
+  weekStart: Date;
+  onSelect: (id: string) => void;
+  onToggle: (id: string) => void;
+}) {
+  const weekEnd = addDays(weekStart, 7);
+  const all = events.filter((e) => e.kind === "reminder");
+  // Overdue from any week, plus everything due in the visible week.
+  const list = all
+    .filter((e) => (!e.done && e.end < now) || (e.start >= weekStart && e.start < weekEnd))
+    .sort((a, b) => Number(!!a.done) - Number(!!b.done) || +a.start - +b.start);
+  const doneCount = list.filter((e) => e.done).length;
+  return (
+    <section>
+      <h3 className="rail-label rail-label-row">
+        Recordatorios
+        <span className="muted">
+          {doneCount}/{list.length}
+        </span>
+      </h3>
+      {list.length === 0 && <p className="empty">Sin recordatorios esta semana.</p>}
+      <div className="rem-list">
+        {list.map((e) => {
+          const overdue = !e.done && e.end < now;
+          return (
+            <div
+              key={e.id}
+              role="button"
+              tabIndex={0}
+              className={`rem-item ${e.done ? "is-done" : ""}`}
+              style={{ ["--c" as string]: CALENDARS[e.calendar].color }}
+              onClick={() => onSelect(e.id)}
+              onKeyDown={(k) => k.key === "Enter" && onSelect(e.id)}
+            >
+              <Check done={!!e.done} overdue={overdue} onToggle={() => onToggle(e.id)} size={16} />
+              <span className="rem-title">{e.title}</span>
+              <span className={`rem-when ${overdue ? "overdue" : ""}`}>
+                {sameDay(e.start, now) ? "Hoy" : `${fmt.weekday.format(e.start).replace(".", "")} ${e.start.getDate()}`}
+                {!e.allDay && ` · ${fmt.time.format(e.start)}`}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+export function Upcoming({ events, now, onSelect }: { events: CalendarEvent[]; now: Date; onSelect: (id: string) => void }) {
+  const list = events.filter((e) => !e.allDay && e.kind !== "reminder" && e.end > now).slice(0, 5);
   return (
     <section className="upcoming">
       <h3 className="rail-label">Próximos</h3>
@@ -81,7 +137,7 @@ export function Upcoming({ events, now, onSelect }: { events: CalendarEvent[]; n
         {list.map((e) => {
           const live = e.start <= now;
           return (
-            <button key={e.id} className="up-item" onClick={() => onSelect(e)} style={{ ["--c" as string]: CALENDARS[e.calendar].color }}>
+            <button key={e.id} className="up-item" onClick={() => onSelect(e.id)} style={{ ["--c" as string]: CALENDARS[e.calendar].color }}>
               <span className={`date-tile ${sameDay(e.start, now) ? "is-today" : ""}`}>
                 <span>{fmt.weekday.format(e.start).replace(".", "").toUpperCase()}</span>
                 <strong>{e.start.getDate()}</strong>

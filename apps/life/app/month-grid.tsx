@@ -2,18 +2,21 @@
 
 import { CALENDARS, type CalendarEvent } from "@/lib/sample-events";
 import { addDays, fmt, sameDay, startOfWeek, wd } from "@/lib/date";
+import { Check } from "@/components/ui";
 
 export function MonthGrid({
   cursor,
   now,
   events,
   onSelect,
+  onToggle,
   onPickDay,
 }: {
   cursor: Date;
   now: Date;
   events: CalendarEvent[];
-  onSelect: (e: CalendarEvent) => void;
+  onSelect: (id: string) => void;
+  onToggle: (id: string) => void;
   onPickDay: (d: Date) => void;
 }) {
   const gridStart = startOfWeek(new Date(cursor.getFullYear(), cursor.getMonth(), 1));
@@ -38,18 +41,28 @@ export function MonthGrid({
                 {d.getDate()}
               </button>
               <div className="mg-events">
-                {list.slice(0, 3).map((e) => (
-                  <button
-                    key={e.id}
-                    className={`mg-ev ${e.allDay ? "is-allday" : ""} ${e.kind === "focus" ? "is-focus" : ""}`}
-                    style={{ ["--c" as string]: CALENDARS[e.calendar].color }}
-                    onClick={() => onSelect(e)}
-                  >
-                    {!e.allDay && <span className="dot" />}
-                    {!e.allDay && <span className="mg-time">{fmt.time.format(e.start)}</span>}
-                    <span className="mg-title">{e.title}</span>
-                  </button>
-                ))}
+                {list.slice(0, 3).map((e) => {
+                  const reminder = e.kind === "reminder";
+                  return (
+                    <div
+                      key={e.id}
+                      role="button"
+                      tabIndex={0}
+                      className={`mg-ev ${e.allDay && !reminder ? "is-allday" : ""} ${e.kind === "focus" ? "is-focus" : ""} ${e.done ? "is-done" : ""}`}
+                      style={{ ["--c" as string]: CALENDARS[e.calendar].color }}
+                      onClick={() => onSelect(e.id)}
+                      onKeyDown={(k) => k.key === "Enter" && onSelect(e.id)}
+                    >
+                      {reminder ? (
+                        <Check done={!!e.done} overdue={!e.done && e.end < now} onToggle={() => onToggle(e.id)} size={13} />
+                      ) : (
+                        !e.allDay && <span className="dot" />
+                      )}
+                      {!e.allDay && <span className="mg-time">{fmt.time.format(e.start)}</span>}
+                      <span className="mg-title">{e.title}</span>
+                    </div>
+                  );
+                })}
                 {list.length > 3 && (
                   <button className="mg-more" onClick={() => onPickDay(d)}>
                     +{list.length - 3} más
